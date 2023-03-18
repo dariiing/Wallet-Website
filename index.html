@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wallet App</title>
+
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Poppins:ital,wght@0,200;0,400;0,500;0,600;0,700;1,800&display=swap" rel="stylesheet">
+    <script src="index.js"></script>
+
+</head>
+<body>
+    <div class="sticky">
+        <div class="logo">
+            <h1><span>Bud</span>get</h1>
+        </div>
+        <button class="log">+ Log Expense</button>
+    </div>
+    <div class="container">
+            <aside>
+                <div class="top">
+                    <div class="logo">
+                        <h1><span>Bud</span>get</h1>
+                    </div>
+                    <div class="light-dark">
+                        <span class="material-symbols-outlined">light_mode</span>
+                        <span class="material-symbols-outlined">dark_mode</span>
+                    </div>
+                </div>
+                <div class="sidebar">
+                    <div class="wallets">
+                        <div class="subtitle-wallet">
+                            <h2>Wallets</h2>
+                            <button type="button">+</button>
+                        </div>
+                        <div class="types">
+                            <div class="wallet">
+                                <span class="material-symbols-outlined">wallet</span>
+                                <section class="text">
+                                    <h3>Home Wallet</h3>
+                                    <h4>$400</h4>
+                                </section>
+
+                            </div>
+                            <div class="wallet">
+                                <span class="material-symbols-outlined">wallet</span>
+                                <section class="text">
+                                    <h3>Economies</h3>
+                                    <h4>$1000</h4>
+                                </section>
+
+                            </div>
+
+
+<!--                            icon + wallet name + money-->
+                        </div>
+                    </div>
+                    <div class="categories">
+                        <div class="subtitle-category">
+                            <h2>Categories</h2>
+                            <button type="button">+</button>
+                        </div>
+                        <div class="types">
+                            <!--                            icon + wallet name + money-->
+                            <div class="wallet">
+                                <span class="material-symbols-outlined">star</span>
+                                <section class="text">
+                                    <h3>Utility</h3>
+                                    <h4>$125</h4>
+                                </section>
+
+                            </div><div class="wallet">
+                            <span class="material-symbols-outlined">heart_plus</span>
+                            <section class="text">
+                                <h3>Health</h3>
+                                <h4>$250</h4>
+                            </section>
+
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        <main>
+            <div class="first-part">
+                <div class="intro-text">
+                    <h2>Hello, Daria!</h2>
+                    <p>How much did you spend today?</p>
+                </div>
+                <button class="log">+ Log Expense</button>
+            </div>
+
+            <div class="insights">
+                <div class="total-money">
+                    <span class="material-symbols-outlined">account_balance</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Total Money</h3>
+                            <h2>$5678</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="total-expenses">
+                    <span class="material-symbols-outlined">sell</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Total Expenses</h3>
+                            <h2>$123</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="total-income">
+                    <span class="material-symbols-outlined">attach_money</span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Total Income</h3>
+                            <h2>$1500</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="history">
+                <h2>History</h2>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Date</th>
+                        <th>Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Electricity Bill</td>
+                        <td>03/03/2023</td>
+                        <td>-$120</td>
+                    </tr>
+                    <tr>
+                        <td>Pepco</td>
+                        <td>26/02/2023</td>
+                        <td>-$150</td>
+                    </tr>
+                    <tr>
+                        <td>Brunch</td>
+                        <td>17/02/2023</td>
+                        <td>-$120</td>
+                    </tr>
+                    <tr>
+                        <td>Scolarship</td>
+                        <td>15/02/2023</td>
+                        <td>+$500</td>
+                    </tr>
+                    <tr>
+                        <td>Cinema</td>
+                        <td>10/01/2023</td>
+                        <td>-$30</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

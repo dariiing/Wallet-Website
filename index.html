@@ -12,15 +12,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Poppins:ital,wght@0,200;0,400;0,500;0,600;0,700;1,800&display=swap" rel="stylesheet">
-    <script src="index.js"></script>
 
 </head>
+<header>
+    <div class="log-popup" id="popup">
+        <h2>Log Expense</h2>
+        <form>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" value="Bills"><br>
+            <label for="data">Date:</label><br>
+            <input type="date" id="data" name="name"><br>
+            <label for="price">Price:</label><br>
+            <input type="number" id="price" name="name" value="0">
+            <div class="radio">
+                <input type="radio" id="expense" name="type">
+                <label for="expense">Expense</label><br>
+                <input type="radio" id="income" name="type">
+                <label for="income">Income</label><br>
+            </div>
+        </form>
+        <button onclick="closePopup()">Done</button>
+    </div>
+</header>
 <body>
     <div class="sticky">
         <div class="logo">
             <h1><span>Bud</span>get</h1>
         </div>
-        <button class="log">+ Log Expense</button>
+        <button class="log" onclick="openPopup()">+ Log Expense</button>
     </div>
     <div class="container">
             <aside>
@@ -56,8 +75,6 @@
 
                             </div>
 
-
-<!--                            icon + wallet name + money-->
                         </div>
                     </div>
                     <div class="categories">
@@ -66,7 +83,6 @@
                             <button type="button">+</button>
                         </div>
                         <div class="types">
-                            <!--                            icon + wallet name + money-->
                             <div class="wallet">
                                 <span class="material-symbols-outlined">star</span>
                                 <section class="text">
@@ -92,7 +108,7 @@
                     <h2>Hello, Daria!</h2>
                     <p>How much did you spend today?</p>
                 </div>
-                <button class="log">+ Log Expense</button>
+                <button class="log" onclick="openPopup()">+ Log Expense</button>
             </div>
 
             <div class="insights">
@@ -132,38 +148,16 @@
                         <th>Product</th>
                         <th>Date</th>
                         <th>Price</th>
+                        <th>Type</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>Electricity Bill</td>
-                        <td>03/03/2023</td>
-                        <td>-$120</td>
-                    </tr>
-                    <tr>
-                        <td>Pepco</td>
-                        <td>26/02/2023</td>
-                        <td>-$150</td>
-                    </tr>
-                    <tr>
-                        <td>Brunch</td>
-                        <td>17/02/2023</td>
-                        <td>-$120</td>
-                    </tr>
-                    <tr>
-                        <td>Scolarship</td>
-                        <td>15/02/2023</td>
-                        <td>+$500</td>
-                    </tr>
-                    <tr>
-                        <td>Cinema</td>
-                        <td>10/01/2023</td>
-                        <td>-$30</td>
-                    </tr>
                     </tbody>
                 </table>
             </div>
         </main>
     </div>
+    <script src="orders.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>

@@ -184,6 +184,7 @@ h1 span{
 
 .first-part button{
     margin-right: 1rem;
+    cursor:pointer;
     font-size:1rem;
     background-color:  var(--card-color);
     color: var(--black-font);
@@ -259,6 +260,52 @@ button:hover,button:active{
 .sticky{
     display:none;
 }
+
+.log-popup h2{
+    margin-bottom:2rem;
+    text-align: center;
+}
+.log-popup label{
+    color: var(--black-font);
+}
+.log-popup{
+    display:none;
+    width:400px;
+    background: var(--card-color);
+    border-radius: var(--card-border-radius);
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    padding:4rem;
+    box-shadow: 0rem 2rem 10rem var(--color-dark);
+    font-size: 40px; text-align: center;
+
+}
+.open-popup{
+    display: block;
+
+}
+form input{
+    margin-bottom:1rem;
+}
+.radio{
+    display:flex;
+    justify-content: center;
+    flex-direction: row;
+    gap:1rem;
+}
+.log-popup button{
+    cursor:pointer;
+    font-size:1rem;
+    background-color:  var(--color-primary);
+    color: var(--black-font);
+    padding:  1rem 2rem;
+    border-radius:var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+
 @media (max-width: 1000px){
     .container{
         width:94%;

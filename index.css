@@ -4,9 +4,29 @@
     --color-dark: #363949;
     --color-light: rgba(132,139,200,0.18);
     --color-background: #EEEEEE;
+    --sticky: #EEEEEE;
+    --button:#EEEEEE;
+    --black-font: black;
+    /*--switch: rgba(132,139,200,0.18);*/
+    --card-color: white;
 
+    --hover-color: #EEEEEE;
     --card-border-radius: 2rem;
     --card-padding:1.8rem;
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
+.dark-theme{
+    --color-background: #181a1e;
+    --button:#7380ec;
+    --sticky: #202528;
+    --color-light: rgba(0,0,0,0.4);
+    --hover-color: #202532;
+    --black-font: #edeffd;
+    /*--switch:#7380ec;*/
+    --card-color: #202528;
+    --color-dark: hsl(0, 0%, 83%);
+    --color-info-dark: green;
     --box-shadow: 0 2rem 3rem var(--color-light);
 }
 
@@ -25,7 +45,7 @@ body{
 }
 
 h2{
-    color: black;
+    color: var(--black-font);
     font-size: 1.5rem;
 }
 
@@ -33,6 +53,7 @@ h1{
     font-weight:800;
     font-size:2rem;
     padding:1rem 0;
+    color: var(--black-font);
 
 }
 h1 span{
@@ -63,19 +84,21 @@ h1 span{
 .top .close{
     display:none;
 }
-
+.types{
+    margin-bottom:1rem;
+}
 .sidebar{
     display:flex;
     flex-direction: column;
     height:87vh;
-    background-color: #F6F6F6 ;
+    background-color: var(--card-color) ;
     position: relative;
     padding-top:3rem;
     transition: all 300ms ease;
-    /*border: 1px solid #BABABA;*/
     box-shadow: var(--box-shadow);
     border-radius:10px;
 }
+
 /*titluri*/
 .subtitle-wallet, .subtitle-category{
     display: flex;
@@ -105,21 +128,25 @@ h1 span{
 
 .sidebar button{
     padding:0.5rem 1rem;
+    cursor:pointer;
+    background-color:  var(--color-primary);
+
     border-radius: 20px;
 }
 
 .wallet:hover{
-    background-color: #EEEEEE;
+    background-color: var(--hover-color);
 }
 
 .insights{
     display:grid;
     grid-template-columns: repeat(3,1fr);
     gap:2rem;
+    color: var(--black-font);
 }
 
 .insights > div {
-    background-color: white;
+    background-color: var(--card-color);
     padding: var(--card-padding);
     border-radius: var(--card-border-radius);
     box-shadow: var(--box-shadow);
@@ -138,6 +165,7 @@ h1 span{
     padding-top:6rem;
     margin-right:1rem;
     padding-bottom:1rem;
+    color: var(--black-font);
 }
 .intro-text h2{
     font-size: 3.5rem;
@@ -155,9 +183,10 @@ h1 span{
 }
 
 .first-part button{
-    margin-right: 5rem;
+    margin-right: 1rem;
     font-size:1rem;
-    background-color: #F6F6F6;
+    background-color:  var(--card-color);
+    color: var(--black-font);
     padding:  1rem 2rem;
     border-radius:var(--card-border-radius);
     box-shadow: var(--box-shadow);
@@ -189,7 +218,8 @@ h1 span{
     margin-bottom:1rem;
 }
 table{
-    background-color: white;
+    background-color: var(--card-color);
+    color: var(--black-font);
     width:100%;
     border-radius: var(--card-border-radius);
     padding: var(--card-padding);
@@ -207,23 +237,24 @@ tbody tr:hover{
 
 .light-dark{
     margin-right:1rem;
-    display:flex;
+    /*display:flex;*/
     align-items: center;
     /*justify-content: space-between;*/
     cursor:pointer;
-    background: var(--color-light);
+    /*background: var(--color-light);*/
+    /*padding:0.3rem;*/
+    color: var(--black-font);
+
+}
+
+.light-dark span{
     padding:0.3rem;
     border-radius: 0.5rem;
-}
-.light-dark span:hover{
-    color: var(--color-primary);
-}
-.light-dark span:active{
-    color: var(--color-primary);
+
 }
 
 button:hover,button:active{
-    color: var(--color-primary);
+    color: var(--black-font);
 }
 .sticky{
     display:none;
@@ -264,14 +295,16 @@ button:hover,button:active{
         justify-content: space-between;
         /*margin:1rem 2rem;*/
         padding:0.5rem 1rem ;
-        background:var(--color-background);
+        background:var(--sticky);
+        box-shadow: var(--box-shadow);
         position:sticky;
         top:0px;
     }
     .sticky button{
-        background:var(--color-background);
+        background:var(--sticky);
         padding:1rem;
         border-radius:25px;
+        color: var(--black-font) ;
         /*font-weight: bold;*/
     }
     main .log{

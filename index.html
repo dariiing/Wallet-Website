@@ -51,13 +51,22 @@
                         <span onclick="themeToggle()" class="material-symbols-outlined">routine</span>
                     </div>
                 </div>
-                <div class="sidebar">
+                <div class="sidebar" id="sidebar">
                     <div class="wallets">
                         <div class="subtitle-wallet">
                             <h2>Wallets</h2>
-                            <button type="button">+</button>
+                            <button onclick="openWallet()" type="button">+</button>
                         </div>
                         <div class="types">
+                            <div class="wallet-form" id="wallet-form">
+                                <form>
+                                    <label for="wallet-name">Wallet name:</label><br>
+                                    <input type="text" id="wallet-name" name="name" value="ex: Economies"><br>
+                                    <label for="wallet-price">Value:</label><br>
+                                    <input type="number" id="wallet-price" name="name" value="100" min="1">
+                                </form>
+                                <button onclick="closeWallet()">Done</button>
+                            </div>
                             <div class="wallet">
                                 <span class="material-symbols-outlined">wallet</span>
                                 <section class="text">
@@ -80,9 +89,18 @@
                     <div class="categories">
                         <div class="subtitle-category">
                             <h2>Categories</h2>
-                            <button type="button">+</button>
+                            <button onclick="openCategory()" type="button">+</button>
                         </div>
                         <div class="types">
+                            <div class="category-form" id="category-form">
+                                <form>
+                                    <label for="category-name">Category name:</label><br>
+                                    <input type="text" id="category-name" name="name" value="ex: Scholarship"><br>
+                                    <label for="category-price">Value:</label><br>
+                                    <input type="number" id="category-price" name="name" value="100" min="1">
+                                </form>
+                                <button onclick="closeCategory()">Done</button>
+                            </div>
                             <div class="wallet">
                                 <span class="material-symbols-outlined">star</span>
                                 <section class="text">

@@ -87,6 +87,7 @@ h1 span{
 .types{
     margin-bottom:1rem;
 }
+
 .sidebar{
     display:flex;
     flex-direction: column;
@@ -97,8 +98,12 @@ h1 span{
     transition: all 300ms ease;
     box-shadow: var(--box-shadow);
     border-radius:10px;
+    margin-bottom:3rem;
 }
 
+.sidebar-height{
+    height:auto;
+}
 /*titluri*/
 .subtitle-wallet, .subtitle-category{
     display: flex;
@@ -130,7 +135,6 @@ h1 span{
     padding:0.5rem 1rem;
     cursor:pointer;
     background-color:  var(--color-primary);
-
     border-radius: 20px;
 }
 
@@ -284,7 +288,6 @@ button:hover,button:active{
 }
 .open-popup{
     display: block;
-
 }
 form input{
     margin-bottom:1rem;
@@ -305,7 +308,22 @@ form input{
     box-shadow: var(--box-shadow);
     transition: all 300ms ease;
 }
+.wallet-form,.category-form{
+    color: var(--black-font);
+    display:none;
+    margin-left:2.5rem;
+    font-weight: bold;
+}
+.wallet-form input,.category-form input{
+    margin-top:0.5rem;
+    background-color:var(--color-primary);
+    border-radius: 5px;
+    padding:0.5rem;
+}
 
+.open-wallet-form,.open-category-form{
+    display:block;
+}
 @media (max-width: 1000px){
     .container{
         width:94%;

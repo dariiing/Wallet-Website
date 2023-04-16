@@ -65,6 +65,16 @@ h1 span{
     font-size: inherit;
     color:var(--color-primary);
 }
+
+.edit-popup span,.log-popup span {
+    /*color:var(--color-dark);*/
+    margin-bottom:1rem;
+    margin-top:2rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    background-color: var(--color-primary);
+    border-radius: 20px;
+}
 .container{
     display:grid;
     width:96%;
@@ -73,9 +83,7 @@ h1 span{
     grid-template-columns: 20rem auto;
     /*background-color: var(--color-info-dark);*/
 }
-/*aside{*/
-/*    height:100vh;*/
-/*}*/
+
 .top{
     display: flex;
     align-items: center;
@@ -97,7 +105,7 @@ h1 span{
     flex-direction: column;
     height:87vh;
     background-color: var(--card-color) ;
-    position: relative;
+    /*position: fixed;*/
     padding-top:3rem;
     transition: all 300ms ease;
     box-shadow: var(--box-shadow);
@@ -108,6 +116,7 @@ h1 span{
     height:auto;
     margin-bottom:3rem;
 }
+
 /*titluri*/
 .subtitle-wallet, .subtitle-category{
     display: flex;
@@ -269,7 +278,7 @@ button:hover,button:active{
     display:none;
 }
 
-.log-popup h2{
+.log-popup h2,.edit-popup h2{
     margin-bottom:2rem;
     text-align: center;
 }
@@ -285,16 +294,39 @@ button:hover,button:active{
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
-    padding:4rem;
+    padding: 0 4rem 4rem;
     margin:auto;
     box-shadow: 0 2rem 10rem var(--color-dark);
-    font-size: 40px; text-align: center;
+    font-size: 40px;
+    text-align: center;
 }
+
+
+.edit-popup{
+    display:none;
+    width:400px;
+    background: var(--card-color);
+    border-radius: var(--card-border-radius);
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    padding: 0 4rem 4rem;
+    margin:auto;
+    box-shadow: 0 2rem 10rem var(--color-dark);
+    font-size: 40px;
+    text-align: center;
+}
+
 .open-popup{
     display: block;
 }
+
 form input{
     margin-bottom:1rem;
+    border: 1px solid var(--color-primary);
+    border-radius: 5px;
+    padding:0.5rem;
 }
 .radio{
     display:flex;
@@ -302,7 +334,7 @@ form input{
     flex-direction: row;
     gap:1rem;
 }
-.log-popup #done{
+.log-popup #done,.edit-popup #delete, .edit-popup #change{
     cursor:pointer;
     font-size:1rem;
     background-color:  var(--color-primary);
@@ -359,6 +391,7 @@ form input{
         margin-right:1rem;
     }
     .sticky{
+        z-index:999998;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -367,7 +400,7 @@ form input{
         background:var(--sticky);
         box-shadow: var(--box-shadow);
         position:sticky;
-        top:0px;
+        top:0;
     }
     .sticky button{
         background:var(--sticky);
@@ -385,13 +418,13 @@ form input{
     .first-part{
         display: inherit;
     }
-    .log-popup{
+    .log-popup,.edit-popup{
         position: fixed;
         z-index:999999;
     }
 }
 @media (max-width:500px){
-    .log-popup{
+    .log-popup,.edit-popup{
         width:300px;
     }
 }

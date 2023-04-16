@@ -20,7 +20,9 @@
       </div>
       <button class="log" onclick="openPopup()">+ Log Expense</button>
     </div>
+
     <div class="log-popup" id="popup">
+        <span onclick="cancelAddExpense()" class="material-symbols-outlined">close</span>
         <h2>Log Expense</h2>
         <form onsubmit="return false">
             <label for="name">Name:</label><br>
@@ -36,6 +38,20 @@
                 <label for="income">Income</label><br><br>
             </div>
             <input type="button" name="button" value="Done" id="done" onclick="closePopup(this.form)">
+        </form>
+    </div>
+
+    <div class="edit-popup" >
+        <span onclick="cancelEdit()" class="material-symbols-outlined">close</span>
+        <h2>Edit Details</h2>
+        <form onsubmit="return false">
+            <label for="name">Change name:</label><br>
+            <input type="text" name="name" value="Piggy Bank"><br>
+            <label for="value">Value:</label><br>
+            <input type="number" id="value" name="value" value="0"><br><br>
+            <input type="button" name="button" id="change" value="Change details"><br><br>
+            <input type="button" name="button" id="delete" value="Delete permanently">
+
         </form>
     </div>
 
@@ -55,31 +71,30 @@
                             <h2>Wallets</h2>
                             <button onclick="openWallet()" type="button">+</button>
                         </div>
-                        <div class="types">
+                        <div class="types-wallet">
                             <div class="wallet-form" id="wallet-form">
                                 <form>
                                     <label for="wallet-name">Wallet name:</label><br>
                                     <input type="text" id="wallet-name" name="name" value="ex: Economies"><br>
                                     <label for="wallet-price">Value:</label><br>
-                                    <input type="number" id="wallet-price" name="name" value="100" min="1">
+                                    <input type="number" id="wallet-price" name="value" value="100" min="1"><br>
+                                    <input type="button" name="button" value="Done" onclick="closeWallet(this.form)">
                                 </form>
-                                <button onclick="closeWallet()">Done</button>
+
                             </div>
                             <div class="wallet">
                                 <span class="material-symbols-outlined">wallet</span>
-                                <section class="text">
+                                <section class="text" onclick="openEditPopup()">
                                     <h3>Home Wallet</h3>
                                     <h4>$400</h4>
                                 </section>
-
                             </div>
                             <div class="wallet">
                                 <span class="material-symbols-outlined">wallet</span>
-                                <section class="text">
+                                <section class="text" onclick="openEditPopup()">
                                     <h3>Economies</h3>
                                     <h4>$1000</h4>
                                 </section>
-
                             </div>
 
                         </div>
@@ -89,26 +104,26 @@
                             <h2>Categories</h2>
                             <button onclick="openCategory()" type="button">+</button>
                         </div>
-                        <div class="types">
+                        <div class="types-cat">
                             <div class="category-form" id="category-form">
                                 <form>
                                     <label for="category-name">Category name:</label><br>
                                     <input type="text" id="category-name" name="name" value="ex: Scholarship"><br>
                                     <label for="category-price">Value:</label><br>
-                                    <input type="number" id="category-price" name="name" value="100" min="1">
+                                    <input type="number" id="category-price" name="value" value="100" min="1"><br>
+                                    <input type="button" name="button" value="Done" onclick="closeCategory(this.form)">
                                 </form>
-                                <button onclick="closeCategory()">Done</button>
                             </div>
                             <div class="wallet">
                                 <span class="material-symbols-outlined">star</span>
-                                <section class="text">
+                                <section class="text" onclick="openEditPopup()">
                                     <h3>Utility</h3>
                                     <h4>$125</h4>
                                 </section>
-
-                            </div><div class="wallet">
+                            </div>
+                            <div class="wallet">
                             <span class="material-symbols-outlined">heart_plus</span>
-                            <section class="text">
+                            <section class="text" onclick="openEditPopup()">
                                 <h3>Health</h3>
                                 <h4>$250</h4>
                             </section>

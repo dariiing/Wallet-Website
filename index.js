@@ -12,12 +12,12 @@ Orders.forEach(order => {
   else{
     type='+';
   }
-  const trContent = `
+
+  tr.innerHTML = `
                     <td>${order.name}</td>
                     <td>${order.date}</td>
                     <td>${type}${order.price}</td>
                     `;
-  tr.innerHTML = trContent;
   document.querySelector('table tbody').appendChild(tr);
 })
 
@@ -31,19 +31,24 @@ function logExpense(){
 
   const lastOrder = Orders[Orders.length - 1];
   const tr = document.createElement('tr');
-  const trContent = `
+
+  tr.innerHTML = `
                     <td>${lastOrder.name}</td>
                     <td>${lastOrder.date}</td>
                     <td>${lastOrder.price}</td>
                     <td>${lastOrder.type}</td>
                     `;
-  tr.innerHTML = trContent;
   document.querySelector('table tbody').appendChild(tr);
 }
 
 function openPopup(){
   let popup = document.getElementById("popup");
   popup.classList.add("open-popup");
+}
+
+function cancelAddExpense(){
+  let popup = document.getElementById("popup");
+  popup.classList.remove("open-popup");
 }
 
 function closePopup(form){
@@ -59,12 +64,11 @@ function closePopup(form){
     inputType = '+';
   }
   const tr = document.createElement('tr');
-  const trContent = `
+  tr.innerHTML = `
                     <td>${inputName}</td>
                     <td>${inputDate}</td>
                     <td>${inputType}${inputPrice}</td>
                     `;
-  tr.innerHTML = trContent;
   const tbody = document.querySelector('table tbody');
   tbody.insertBefore(tr, tbody.firstChild);
 }
@@ -76,12 +80,6 @@ function openWallet(){
   popup.classList.add("sidebar-height");
 }
 
-function closeWallet(){
-  let popup = document.getElementById("wallet-form");
-  popup.classList.remove("open-wallet-form");
-  popup = document.getElementById("sidebar");
-  popup.classList.remove("sidebar-height");
-}
 
 function openCategory(){
   let popup = document.getElementById("category-form");
@@ -90,9 +88,52 @@ function openCategory(){
   popup.classList.add("sidebar-height");
 }
 
-function closeCategory(){
+
+function openEditPopup(){
+  let popup = document.querySelector('.edit-popup');
+  popup.classList.add("open-popup");
+}
+
+function cancelEdit(){
+  let popup = document.querySelector('.edit-popup');
+  popup.classList.remove("open-popup");
+}
+
+function closeWallet(form){
+  let popup = document.getElementById("wallet-form");
+  popup.classList.remove("open-wallet-form");
+  popup = document.getElementById("sidebar");
+  popup.classList.remove("sidebar-height");
+  let changeName = form.name.value;
+  let changeValue = form.value.value;
+
+  const div = document.createElement('div');
+  div.setAttribute('class', 'wallet');
+
+  div.innerHTML = `<span class="material-symbols-outlined">wallet</span>
+                       <section class="text" onClick="openEditPopup()">
+                       <h3>${changeName}</h3>
+                       <h4>$${changeValue}</h4>
+                       </section>`;
+  document.querySelector('.types-wallet').appendChild(div);
+}
+
+function closeCategory(form){
   let popup = document.getElementById("category-form");
   popup.classList.remove("open-category-form");
   popup = document.getElementById("sidebar");
   popup.classList.remove("sidebar-height");
+  let changeName = form.name.value;
+  let changeValue = form.value.value;
+
+  const div = document.createElement('div');
+  div.setAttribute('class', 'wallet');
+
+  div.innerHTML = `<span class="material-symbols-outlined">star</span>
+                       <section class="text" onClick="openEditPopup()">
+                       <h3>${changeName}</h3>
+                       <h4>$${changeValue}</h4>
+                       </section>`;
+  document.querySelector('.types-cat').appendChild(div);
 }
+

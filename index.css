@@ -386,8 +386,12 @@ form input{
         display: inherit;
     }
     .log-popup{
-        position:sticky;
-        top:0;
-        left:0;
+        position: fixed;
+        z-index:999999;
+    }
+}
+@media (max-width:500px){
+    .log-popup{
+        width:300px;
     }
 }

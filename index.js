@@ -1,15 +1,21 @@
 function themeToggle() {
-  var element = document.body;
+  const element = document.body;
   element.classList.toggle("dark-theme");
 }
 
 Orders.forEach(order => {
   const tr = document.createElement('tr');
+  let type;
+  if( order.type==='expense'){
+    type='-';
+  }
+  else{
+    type='+';
+  }
   const trContent = `
                     <td>${order.name}</td>
                     <td>${order.date}</td>
-                    <td>${order.price}</td>
-                    <td>${order.type}</td>
+                    <td>${type}${order.price}</td>
                     `;
   tr.innerHTML = trContent;
   document.querySelector('table tbody').appendChild(tr);
@@ -40,9 +46,27 @@ function openPopup(){
   popup.classList.add("open-popup");
 }
 
-function closePopup(){
+function closePopup(form){
   let popup = document.getElementById("popup");
   popup.classList.remove("open-popup");
+  let inputName = form.name.value;
+  let inputDate = form.date.value;
+  let inputPrice = form.price.value;
+  let inputType;
+  if (form.type[0].checked) {
+    inputType = '-';
+  } else if (form.type[1].checked) {
+    inputType = '+';
+  }
+  const tr = document.createElement('tr');
+  const trContent = `
+                    <td>${inputName}</td>
+                    <td>${inputDate}</td>
+                    <td>${inputType}${inputPrice}</td>
+                    `;
+  tr.innerHTML = trContent;
+  const tbody = document.querySelector('table tbody');
+  tbody.insertBefore(tr, tbody.firstChild);
 }
 
 function openWallet(){

@@ -12,29 +12,26 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Poppins:ital,wght@0,200;0,400;0,500;0,600;0,700;1,800&display=swap" rel="stylesheet">
-
 </head>
-<header>
+<body>
     <div class="log-popup" id="popup">
         <h2>Log Expense</h2>
-        <form>
+        <form onsubmit="return false">
             <label for="name">Name:</label><br>
             <input type="text" id="name" name="name" value="Bills"><br>
             <label for="data">Date:</label><br>
-            <input type="date" id="data" name="name"><br>
-            <label for="price">Price:</label><br>
-            <input type="number" id="price" name="name" value="0">
+            <input type="date" id="data" name="date"><br>
+            <label for="price">Value:</label><br>
+            <input type="number" id="price" name="price" value="0">
             <div class="radio">
                 <input type="radio" id="expense" name="type">
                 <label for="expense">Expense</label><br>
                 <input type="radio" id="income" name="type">
-                <label for="income">Income</label><br>
+                <label for="income">Income</label><br><br>
             </div>
+            <input type="button" name="button" value="Done" id="done" onclick="closePopup(this.form)">
         </form>
-        <button onclick="closePopup()">Done</button>
     </div>
-</header>
-<body>
     <div class="sticky">
         <div class="logo">
             <h1><span>Bud</span>get</h1>
@@ -166,7 +163,6 @@
                         <th>Product</th>
                         <th>Date</th>
                         <th>Price</th>
-                        <th>Type</th>
                     </tr>
                     </thead>
                     <tbody>

@@ -2,44 +2,62 @@ function themeToggle() {
   const element = document.body;
   element.classList.toggle("dark-theme");
 }
+function updateSum() {
+  let wallets = document.getElementsByClassName("money");
+  let totalSum = 0,i;
 
+  for (i = 0; i < wallets.length; i++) {
+    let wallet = wallets[i];
+    let h4 = wallet.getElementsByTagName("h4")[0];
+    let value = parseFloat(h4.innerText.replace("$", ""));
+
+    totalSum += value;
+  }
+
+  let totalMoney = document.querySelector(".total-money h2");
+  totalMoney.textContent = "$" + totalSum;
+}
+
+updateSum();
+
+function updateExpense(){
+  let totalSum = 0;
+  Orders.forEach(order =>{
+    if(order.type==='-'){
+      totalSum += parseInt(order.price);
+    }
+  })
+
+  let totalMoney = document.querySelector(".total-expenses h2");
+  totalMoney.textContent = "$" + totalSum;
+}
+
+updateExpense();
+
+function updateIncome(){
+  let totalSum = 0;
+  Orders.forEach(order =>{
+    if(order.type==='+'){
+      totalSum += parseInt(order.price);
+    }
+  })
+
+  let totalMoney = document.querySelector(".total-income h2");
+  totalMoney.textContent = "$" + totalSum;
+}
+
+updateIncome();
 Orders.forEach(order => {
   const tr = document.createElement('tr');
-  let type;
-  if( order.type==='expense'){
-    type='-';
-  }
-  else{
-    type='+';
-  }
 
   tr.innerHTML = `
                     <td>${order.name}</td>
                     <td>${order.date}</td>
-                    <td>${type}${order.price}</td>
+                    <td>${order.type}${order.price}</td>
                     `;
   document.querySelector('table tbody').appendChild(tr);
 })
 
-function logExpense(){
-  Orders.push({
-    name: 'Gas Bill',
-    date: '04/03/2023',
-    price: 150,
-    type: 'expense'
-  });
-
-  const lastOrder = Orders[Orders.length - 1];
-  const tr = document.createElement('tr');
-
-  tr.innerHTML = `
-                    <td>${lastOrder.name}</td>
-                    <td>${lastOrder.date}</td>
-                    <td>${lastOrder.price}</td>
-                    <td>${lastOrder.type}</td>
-                    `;
-  document.querySelector('table tbody').appendChild(tr);
-}
 
 function openPopup(){
   let popup = document.getElementById("popup");
@@ -63,6 +81,17 @@ function closePopup(form){
   } else if (form.type[1].checked) {
     inputType = '+';
   }
+
+  Orders.push({
+    name: form.name.value,
+    date: form.date.value,
+    price: form.price.value,
+    type: inputType
+  });
+
+  updateExpense();
+  updateIncome();
+
   const tr = document.createElement('tr');
   tr.innerHTML = `
                     <td>${inputName}</td>
@@ -102,6 +131,7 @@ function openEditPopup(form){
     currentName.textContent = nameInput.value;
     let currentValue = form.closest('.text').querySelector('.text h4');
     currentValue.textContent = '$' + valueInput.value;
+    updateSum();
     cancelEdit();
   });
 
@@ -126,7 +156,8 @@ function closeWallet(form){
   let changeValue = form.value.value;
 
   const div = document.createElement('div');
-  div.setAttribute('class', 'wallet');
+  div.setAttribute('class', 'wallet money');
+
 
   div.innerHTML = `<span class="material-symbols-outlined">wallet</span>
                        <section class="text" onClick="openEditPopup(this)">
@@ -134,6 +165,7 @@ function closeWallet(form){
                        <h4>$${changeValue}</h4>
                        </section>`;
   document.querySelector('.types-wallet').appendChild(div);
+  updateSum();
 }
 
 function closeCategory(form){
@@ -146,7 +178,6 @@ function closeCategory(form){
 
   const div = document.createElement('div');
   div.setAttribute('class', 'wallet');
-
   div.innerHTML = `<span class="material-symbols-outlined">star</span>
                        <section class="text" onClick="openEditPopup(this)">
                        <h3>${changeName}</h3>
@@ -154,3 +185,4 @@ function closeCategory(form){
                        </section>`;
   document.querySelector('.types-cat').appendChild(div);
 }
+

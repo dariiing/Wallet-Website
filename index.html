@@ -37,8 +37,13 @@
                 <input type="radio" id="income" name="type">
                 <label for="income">Income</label><br><br>
             </div>
+            <label for="wallet">Choose a wallet:</label><br>
+            <input id="wallet" list="wallet-opt"><br>
+            <datalist id="wallet-opt">
+            </datalist>
             <input type="button" name="button" value="Done" id="done" onclick="closePopup(this.form)">
         </form>
+
     </div>
 
     <div class="edit-popup" >
@@ -68,7 +73,7 @@
                     <div class="wallets">
                         <div class="subtitle-wallet">
                             <h2>Wallets</h2>
-                            <button onclick="openWallet()" type="button">+</button>
+                            <button onclick="createWallet()" type="button">+</button>
                         </div>
                         <div class="types-wallet">
                             <div class="wallet-form" id="wallet-form">
@@ -79,29 +84,13 @@
                                     <input type="number" id="wallet-price" name="value" value="100" min="1"><br>
                                     <input type="button" name="button" value="Done" onclick="closeWallet(this.form)">
                                 </form>
-
                             </div>
-                            <div class="wallet money">
-                                <span class="material-symbols-outlined">wallet</span>
-                                <section class="text" onclick="openEditPopup(this)">
-                                    <h3>Home Wallet</h3>
-                                    <h4>$400</h4>
-                                </section>
-                            </div>
-                            <div class="wallet money">
-                                <span class="material-symbols-outlined">wallet</span>
-                                <section class="text" onclick="openEditPopup(this)">
-                                    <h3>Economies</h3>
-                                    <h4>$1000</h4>
-                                </section>
-                            </div>
-
                         </div>
                     </div>
                     <div class="categories">
                         <div class="subtitle-category">
                             <h2>Categories</h2>
-                            <button onclick="openCategory()" type="button">+</button>
+                            <button onclick="createCategory()" type="button">+</button>
                         </div>
                         <div class="types-cat">
                             <div class="category-form" id="category-form">
@@ -113,23 +102,9 @@
                                     <input type="button" name="button" value="Done" onclick="closeCategory(this.form)">
                                 </form>
                             </div>
-                            <div class="wallet">
-                                <span class="material-symbols-outlined">star</span>
-                                <section class="text" onclick="openEditPopup(this)">
-                                    <h3>Utility</h3>
-                                    <h4>$125</h4>
-                                </section>
-                            </div>
-                            <div class="wallet">
-                            <span class="material-symbols-outlined">heart_plus</span>
-                            <section class="text" onclick="openEditPopup(this)">
-                                <h3>Health</h3>
-                                <h4>$250</h4>
-                            </section>
                         </div>
                         </div>
                     </div>
-                </div>
             </aside>
         <main>
             <div class="first-part">
@@ -185,7 +160,8 @@
             </div>
         </main>
     </div>
-    <script src="orders.js"></script>
+    <script src="expenses.js"></script>
     <script src="index.js"></script>
+    <script src="popups.js"></script>
 </body>
 </html>

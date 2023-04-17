@@ -89,10 +89,22 @@ function openCategory(){
 }
 
 
-function openEditPopup(){
+function openEditPopup(element){
   let popup = document.querySelector('.edit-popup');
   popup.classList.add("open-popup");
+
+  const deleteBtn = document.getElementById('delete');
+  deleteBtn.addEventListener('click', function() {
+    deleteWallet(element);
+  });
 }
+
+function deleteWallet(wallet) {
+  wallet.parentNode.remove();
+  cancelEdit();
+}
+
+
 
 function cancelEdit(){
   let popup = document.querySelector('.edit-popup');
@@ -111,7 +123,7 @@ function closeWallet(form){
   div.setAttribute('class', 'wallet');
 
   div.innerHTML = `<span class="material-symbols-outlined">wallet</span>
-                       <section class="text" onClick="openEditPopup()">
+                       <section class="text" onClick="openEditPopup(this)">
                        <h3>${changeName}</h3>
                        <h4>$${changeValue}</h4>
                        </section>`;
@@ -130,10 +142,9 @@ function closeCategory(form){
   div.setAttribute('class', 'wallet');
 
   div.innerHTML = `<span class="material-symbols-outlined">star</span>
-                       <section class="text" onClick="openEditPopup()">
+                       <section class="text" onClick="openEditPopup(this)">
                        <h3>${changeName}</h3>
                        <h4>$${changeValue}</h4>
                        </section>`;
   document.querySelector('.types-cat').appendChild(div);
 }
-

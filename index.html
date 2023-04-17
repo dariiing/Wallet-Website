@@ -50,8 +50,7 @@
             <label for="value">Value:</label><br>
             <input type="number" id="value" name="value" value="0"><br><br>
             <input type="button" name="button" id="change" value="Change details"><br><br>
-            <input type="button" name="button" id="delete" value="Delete permanently">
-
+            <input type="button" name="button" id="delete" value="Delete permanently" onclick="deleteWallet()">
         </form>
     </div>
 
@@ -84,14 +83,14 @@
                             </div>
                             <div class="wallet">
                                 <span class="material-symbols-outlined">wallet</span>
-                                <section class="text" onclick="openEditPopup()">
+                                <section class="text" onclick="openEditPopup(this)">
                                     <h3>Home Wallet</h3>
                                     <h4>$400</h4>
                                 </section>
                             </div>
                             <div class="wallet">
                                 <span class="material-symbols-outlined">wallet</span>
-                                <section class="text" onclick="openEditPopup()">
+                                <section class="text" onclick="openEditPopup(this)">
                                     <h3>Economies</h3>
                                     <h4>$1000</h4>
                                 </section>
@@ -116,18 +115,17 @@
                             </div>
                             <div class="wallet">
                                 <span class="material-symbols-outlined">star</span>
-                                <section class="text" onclick="openEditPopup()">
+                                <section class="text" onclick="openEditPopup(this)">
                                     <h3>Utility</h3>
                                     <h4>$125</h4>
                                 </section>
                             </div>
                             <div class="wallet">
                             <span class="material-symbols-outlined">heart_plus</span>
-                            <section class="text" onclick="openEditPopup()">
+                            <section class="text" onclick="openEditPopup(this)">
                                 <h3>Health</h3>
                                 <h4>$250</h4>
                             </section>
-
                         </div>
                         </div>
                     </div>

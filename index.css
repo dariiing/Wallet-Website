@@ -101,9 +101,10 @@ h1 span{
 }
 
 .sidebar{
+    margin-bottom:2rem;
     display:flex;
     flex-direction: column;
-    height:87vh;
+    /*height:87vh;*/
     background-color: var(--card-color) ;
     /*position: fixed;*/
     padding-top:3rem;
@@ -359,6 +360,10 @@ form input{
 
 .open-wallet-form,.open-category-form{
     display:block;
+}
+
+.categories{
+    margin-bottom:2rem;
 }
 @media (max-width: 1000px){
     .container{

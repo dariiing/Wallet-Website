@@ -44,13 +44,13 @@
     <div class="edit-popup" >
         <span onclick="cancelEdit()" class="material-symbols-outlined">close</span>
         <h2>Edit Details</h2>
-        <form onsubmit="return false">
-            <label for="name">Change name:</label><br>
-            <input type="text" name="name" value="Piggy Bank"><br>
-            <label for="value">Value:</label><br>
-            <input type="number" id="value" name="value" value="0"><br><br>
-            <input type="button" name="button" id="change" value="Change details"><br><br>
-            <input type="button" name="button" id="delete" value="Delete permanently" onclick="deleteWallet()">
+        <form onclick="return false">
+            <label for="change-name">Change name:</label><br>
+            <input type="text" id="change-name" name="name" value="Piggy Bank"><br>
+            <label for="change-value">Value:</label><br>
+            <input type="number" id="change-value" name="value" value="0"><br><br>
+            <input type="submit" name="button" id="change" value="Change details" ><br><br>
+            <input type="button" name="button" id="delete" value="Delete permanently" >
         </form>
     </div>
 

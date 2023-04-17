@@ -56,7 +56,7 @@ h2{
 h1{
     font-weight:800;
     font-size:2rem;
-    padding:1rem 0;
+    /*padding:1rem 0;*/
     color: var(--black-font);
 
 }
@@ -82,14 +82,16 @@ h1 span{
     gap:1.8rem;
     grid-template-columns: 20rem auto;
     /*background-color: var(--color-info-dark);*/
+    position:relative;
 }
+
 
 .top{
     display: flex;
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
-    margin-top:1.5rem;
+    margin-top:2rem;
     padding-left:2.5rem;
 }
 
@@ -101,16 +103,18 @@ h1 span{
 }
 
 .sidebar{
+    margin-top:1rem;
     margin-bottom:2rem;
     display:flex;
     flex-direction: column;
     /*height:87vh;*/
-    background-color: var(--card-color) ;
-    /*position: fixed;*/
+    background-color: var(--card-color);
     padding-top:3rem;
     transition: all 300ms ease;
     box-shadow: var(--box-shadow);
     border-radius:10px;
+    position:sticky;
+    top:0;
 }
 
 .sidebar-height{
@@ -231,6 +235,7 @@ h1 span{
 
 .history{
     margin-top:2rem;
+    margin-bottom:2rem;
 }
 .history h2{
     font-size:2rem;
@@ -321,6 +326,8 @@ button:hover,button:active{
 
 .open-popup{
     display: block;
+    position:fixed;
+    z-index:9999;
 }
 
 form input{
@@ -365,6 +372,7 @@ form input{
 .categories{
     margin-bottom:2rem;
 }
+
 @media (max-width: 1000px){
     .container{
         width:94%;

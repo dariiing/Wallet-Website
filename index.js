@@ -89,22 +89,28 @@ function openCategory(){
 }
 
 
-function openEditPopup(element){
+function openEditPopup(form){
   let popup = document.querySelector('.edit-popup');
   popup.classList.add("open-popup");
 
+  const nameInput = document.getElementById('change-name');
+  const valueInput = document.getElementById('change-value');
+
+  const changeBtn = document.getElementById('change');
+  changeBtn.addEventListener('click', function() {
+    let currentName = form.closest('.text').querySelector('.text h3');
+    currentName.textContent = nameInput.value;
+    let currentValue = form.closest('.text').querySelector('.text h4');
+    currentValue.textContent = '$' + valueInput.value;
+    cancelEdit();
+  });
+
   const deleteBtn = document.getElementById('delete');
   deleteBtn.addEventListener('click', function() {
-    deleteWallet(element);
+    form.parentNode.remove();
+    cancelEdit();
   });
 }
-
-function deleteWallet(wallet) {
-  wallet.parentNode.remove();
-  cancelEdit();
-}
-
-
 
 function cancelEdit(){
   let popup = document.querySelector('.edit-popup');

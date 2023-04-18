@@ -24,7 +24,7 @@
     <div class="log-popup" id="popup">
         <span onclick="cancelAddExpense()" class="material-symbols-outlined">close</span>
         <h2>Log Expense</h2>
-        <form onsubmit="return false">
+        <form onsubmit="return false" id="expense-tracker">
             <label for="name">Name:</label><br>
             <input type="text" id="name" name="name" value="Bills"><br>
             <label for="data">Date:</label><br>
@@ -37,10 +37,12 @@
                 <input type="radio" id="income" name="type">
                 <label for="income">Income</label><br><br>
             </div>
-            <label for="wallet">Choose a wallet:</label><br>
-            <input id="wallet" list="wallet-opt"><br>
-            <datalist id="wallet-opt">
-            </datalist>
+            <label for="wallet-opt">Choose a wallet:</label>
+            <select id="wallet-opt" form="expense-tracker">
+            </select><br>
+            <label for="cat-opt">Choose a category:</label>
+            <select id="cat-opt" form="expense-tracker">
+            </select><br><br>
             <input type="button" name="button" value="Done" id="done" onclick="closePopup(this.form)">
         </form>
 
@@ -161,7 +163,7 @@
         </main>
     </div>
     <script src="expenses.js"></script>
-    <script src="index.js"></script>
     <script src="popups.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>

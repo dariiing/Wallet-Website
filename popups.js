@@ -7,7 +7,7 @@ function cancelAddExpense(){
     let popup = document.getElementById("popup");
     popup.classList.remove("open-popup");
 }
-
+//add expense
 function closePopup(form){
     let popup = document.getElementById("popup");
     popup.classList.remove("open-popup");
@@ -20,6 +20,25 @@ function closePopup(form){
     } else if (form.type[1].checked) {
         inputType = '+';
     }
+
+    let walletSelect = document.getElementById("wallet-opt");
+    let walletIndex = walletSelect.selectedIndex;
+    let selectedWallet = walletSelect.options[walletIndex].value;
+
+    Wallets.forEach(wallet =>{
+        if(wallet.name === selectedWallet ){
+            if(inputType === '-'){
+                wallet.value -= parseInt(inputPrice);
+            }
+            else{
+                wallet.value += parseInt(inputPrice);
+            }
+        }
+    })
+    let catSelect = document.getElementById("cat-opt");
+    let catIndex = catSelect.selectedIndex;
+    let selectedCategory = catSelect.options[catIndex].value;
+
 
     Expenses.push({
         name: form.name.value,
@@ -78,6 +97,8 @@ function openEditPopup(form){
         });
 
         updateSum();
+        populateWallets();
+        populateCategories();
         cancelEdit();
     });
 
@@ -88,9 +109,11 @@ function openEditPopup(form){
             if (wallet.name === currenName.textContent) {
                 Wallets.splice(index, 1);
                 updateSum();
+                populateWallets();
             }
         });
         form.parentNode.remove();
+
         cancelEdit();
     });
 }
@@ -125,6 +148,8 @@ function closeWallet(form){
     });
 
     updateSum();
+    populateWallets();
+    populateCategories();
 }
 
 function closeCategory(form){
@@ -148,4 +173,27 @@ function closeCategory(form){
         value: changeValue
     });
     document.querySelector('.types-cat').appendChild(div);
+}
+
+function populateWallets(){
+    let select = document.getElementById("wallet-opt");
+
+    select.innerHTML='';
+    Wallets.forEach(wallet =>{
+        let option = document.createElement('option');
+        option.value= wallet.name;
+        option.text = wallet.name;
+        select.appendChild(option);
+    })
+}
+function populateCategories(){
+    let select = document.getElementById("cat-opt");
+
+    select.innerHTML='';
+    Categories.forEach(category =>{
+        let option = document.createElement('option');
+        option.value= category.name;
+        option.text = category.name;
+        select.appendChild(option);
+    })
 }

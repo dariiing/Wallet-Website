@@ -7,6 +7,30 @@ const Expenses = [
         type: '-'
     },
     {
+        name: 'School Tuition',
+        date: '2023-04-13',
+        price: 124,
+        type: '-'
+    },
+    {
+        name: 'Bolt',
+        date: '2023-04-15',
+        price: 14,
+        type: '-'
+    },
+    {
+        name: 'Shoes',
+        date: '2023-04-15',
+        price: 140,
+        type: '-'
+    },
+    {
+        name: 'Prize',
+        date: '2023-04-15',
+        price: 100,
+        type: '+'
+    },
+    {
         name: 'Pepco',
         date: '2023-02-03',
         price: 120,
@@ -45,6 +69,17 @@ const Categories = [
     {
         name: 'Health',
         value: 324
+    }
+]
+
+let List = [
+    {
+        name: 'Food',
+        value: 122
+    },
+    {
+        name: 'Phone',
+        value: 200
     }
 ]
 

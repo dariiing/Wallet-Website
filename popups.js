@@ -12,8 +12,6 @@ function cancelAddExpense(){
 function closePopup(form){
     let popup = document.getElementById("popup");
     popup.classList.remove("open-popup");
-    let inputName = form.name.value;
-    let inputDate = form.date.value;
     let inputPrice = form.price.value;
     let inputType;
     if (form.type[0].checked) {
@@ -62,7 +60,7 @@ function closePopup(form){
         type: inputType
     });
 
-    showRows = 3;
+    showRows = 5;
     updateExpenses();
     updateSumTotal();
     updateSumExpense();

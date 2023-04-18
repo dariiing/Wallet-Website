@@ -207,7 +207,7 @@ h1 span{
 
 }
 
-.first-part button{
+.first-part button,.text-button button{
     margin-right: 1rem;
     cursor:pointer;
     font-size:1rem;
@@ -220,7 +220,7 @@ h1 span{
     transition: all 300ms ease;
 }
 
-.first-part button:hover{
+.first-part button:hover,.text-button button{
     box-shadow: none;
 }
 .insights span{
@@ -376,7 +376,7 @@ form input{
     margin-bottom:2rem;
 }
 
-.history span{
+.history .more{
     margin-left:1rem;
     margin-right:1rem;
     cursor:pointer;
@@ -404,6 +404,25 @@ footer button{
     border-radius: var(--card-border-radius);
     margin-bottom:0.5rem;
     box-shadow: var(--box-shadow);
+    gap:1rem;
+}
+
+.text-button{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top:2rem;
+    margin-bottom:2rem;
+}
+.text-button h2{
+    font-size: 2rem;
+}
+.text-button button{
+    margin-top:0;
+}
+tr span{
+    cursor: pointer;
 }
 @media (max-width: 1000px){
     .container{

@@ -1,6 +1,6 @@
-let showRows = 3;
+let showRows = 5;
 function updateExpenses(){
-  const tbody = document.querySelector('table tbody');
+  const tbody = document.querySelector('.history table tbody');
   tbody.innerHTML = '';
   for (let i = Expenses.length - 1; i >= 0; i--) {
     if(showRows > 0){
@@ -11,17 +11,94 @@ function updateExpenses(){
                     <td>${order.name}</td>
                     <td>${order.date}</td>
                     <td>${order.type}${order.price}</td>
+                    <td><span class="material-symbols-outlined" onclick="deleteExpense(this.parentNode)">delete</span></td>
                     `;
       tbody.appendChild(tr);
       showRows--;
     }
   }
 }
+function deleteExpense(td){
+  const name = td.parentNode.children[0].textContent;
+  const typePrice = td.parentNode.children[2].textContent.split('');
+  const type = typePrice[0];
+  const price = parseInt(typePrice.slice(1).join(''));
+  Expenses.forEach((item, index) => {
+    if(name === item.name && type === item.type && price === item.price) {
+      Expenses.splice(index, 1);
+    }
+  });
+  console.log(Expenses);
+  console.log(typePrice);
+  showRows = 5;
+  if(typePrice[0] === '-'){
+    Wallets[0].value += price;
+  }
+  else{
+    Wallets[0].value -= price;
+  }
+  updateExpenses();
+  updateSumTotal();
+  updateSumExpense();
+  updateSumIncome();
+}
+
+function updateList(){
+  const tbody = document.querySelector('.todo table tbody');
+  tbody.innerHTML = '';
+  List.forEach(item=>{
+    const tr = document.createElement('tr');
+
+    tr.innerHTML = `
+                    <td><input type="checkbox" onclick="completeItem(this.parentNode)"></td>
+                    <td>${item.name}</td>
+                    <td>${item.value}</td>
+                    <td><span class="material-symbols-outlined" onclick="deleteItem(this.parentNode)">delete</span></td>
+                    `;
+    tbody.appendChild(tr);
+  })
+}
+
+function completeItem(td){
+  const nameAdd = td.parentNode.children[1].textContent;
+  const valueAdd = td.parentNode.children[2].textContent;
+  const currentDate = new Date();
+  Expenses.push({
+    name: nameAdd,
+    date: currentDate.toISOString().substring(0, 10),
+    price: parseInt(valueAdd),
+    type: '-'
+  });
+  console.log(Expenses);
+  showRows = 5;
+  updateExpenses();
+
+
+  Wallets[0].value -= parseInt(valueAdd);
+
+  updateSumTotal();
+  updateSumExpense();
+  deleteItem(td);
+}
+
+function deleteItem(td){
+  const name = td.parentNode.children[1].textContent;
+  const value = td.parentNode.children[2].textContent;
+  List.forEach((item, index) => {
+    if(name === item.name && parseInt(value) === item.value) {
+      List.splice(index, 1);
+
+    }
+  });
+  updateList();
+}
+
+
 function showMore() {
   let allRows = Expenses.length;
-  let button = document.querySelector(".history span");
+  let button = document.querySelector(".history .more");
   if (showRows === allRows) {
-    showRows = 3;
+    showRows = 5;
     button.style.backgroundColor ="var(--card-color)";
   } else {
     showRows = allRows;
@@ -98,7 +175,7 @@ populateCategories();
 updateWallets();
 updateExpenses();
 updateCategories();
-
+updateList();
 
 function themeToggle() {
   const element = document.body;

@@ -37,6 +37,7 @@ function deleteExpense(td){
   else{
     Wallets[0].value -= price;
   }
+  updateWallets();
   updateExpenses();
   updateSumTotal();
   updateSumExpense();
@@ -75,7 +76,7 @@ function completeItem(td){
 
 
   Wallets[0].value -= parseInt(valueAdd);
-
+  updateWallets();
   updateSumTotal();
   updateSumExpense();
   deleteItem(td);

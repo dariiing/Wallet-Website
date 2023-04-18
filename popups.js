@@ -54,6 +54,7 @@ function closePopup(form){
         }
     })
 
+    //tabel
     Expenses.push({
         name: form.name.value,
         date: form.date.value,
@@ -61,18 +62,11 @@ function closePopup(form){
         type: inputType
     });
 
-    updateSum();
-    updateExpense();
-    updateIncome();
-
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-                    <td>${inputName}</td>
-                    <td>${inputDate}</td>
-                    <td>${inputType}${inputPrice}</td>
-                    `;
-    const tbody = document.querySelector('table tbody');
-    tbody.insertBefore(tr, tbody.firstChild);
+    showRows = 3;
+    updateExpenses();
+    updateSumTotal();
+    updateSumExpense();
+    updateSumIncome();
 }
 
 function createWallet(){
@@ -89,6 +83,7 @@ function createCategory(){
     popup.classList.add("sidebar-height");
 }
 
+//this = div cu wallet
 function openEditPopup(form){
     let popup = document.querySelector('.edit-popup');
     popup.classList.add("open-popup");
@@ -98,8 +93,8 @@ function openEditPopup(form){
 
     const changeBtn = document.getElementById('change');
     changeBtn.addEventListener('click', function() {
-        let currentName = form.closest('.text').querySelector('.text h3');
-        let currentValue = form.closest('.text').querySelector('.text h4');
+        let currentName = form.querySelector('.text h3');
+        let currentValue = form.querySelector('.text h4');
 
         Wallets.forEach(wallet => {
             if (wallet.name === currentName.textContent && wallet.value === currentValue.textContent.replace('$', '')) {
@@ -111,7 +106,7 @@ function openEditPopup(form){
             }
         });
 
-        updateSum();
+        updateSumTotal();
         populateWallets();
         populateCategories();
         cancelEdit();
@@ -123,7 +118,7 @@ function openEditPopup(form){
         Wallets.forEach((wallet, index) => {
             if (wallet.name === currenName.textContent) {
                 Wallets.splice(index, 1);
-                updateSum();
+                updateSumTotal();
                 populateWallets();
             }
         });
@@ -162,7 +157,7 @@ function closeWallet(form){
         value: changeValue
     });
 
-    updateSum();
+    updateSumTotal();
     populateWallets();
     populateCategories();
 }
@@ -212,3 +207,4 @@ function populateCategories(){
         select.appendChild(option);
     })
 }
+

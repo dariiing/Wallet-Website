@@ -1,15 +1,39 @@
+let showRows = 3;
 function updateExpenses(){
-  Expenses.forEach(order => {
-    const tr = document.createElement('tr');
+  const tbody = document.querySelector('table tbody');
+  tbody.innerHTML = '';
+  for (let i = Expenses.length - 1; i >= 0; i--) {
+    if(showRows > 0){
+      const order = Expenses[i];
+      const tr = document.createElement('tr');
 
-    tr.innerHTML = `
+      tr.innerHTML = `
                     <td>${order.name}</td>
                     <td>${order.date}</td>
                     <td>${order.type}${order.price}</td>
                     `;
-    document.querySelector('table tbody').appendChild(tr);
-  })
+      tbody.appendChild(tr);
+      showRows--;
+    }
+  }
 }
+function showMore() {
+  let allRows = Expenses.length;
+  let button = document.querySelector(".history span");
+  if (showRows === allRows) {
+    showRows = 3;
+    button.style.backgroundColor ="var(--card-color)";
+  } else {
+    showRows = allRows;
+    button.style.backgroundColor ="var(--color-primary)";
+
+  }
+  let currentRows = showRows;
+  updateExpenses();
+  showRows = currentRows;
+
+}
+
 
 function updateWallets(){
   const walletsContainer = document.querySelector('.types-wallet');
@@ -53,7 +77,7 @@ function updateCategories(){
     div.setAttribute('class', 'wallet');
 
 
-    div.innerHTML = `<span class="material-symbols-outlined">wallet</span>
+    div.innerHTML = `<span class="material-symbols-outlined">category</span>
                        <section class="text" onClick="openEditPopup(this)">
                        <h3>${category.name}</h3>
                        <h4>$${category.value}</h4>
@@ -63,9 +87,9 @@ function updateCategories(){
 }
 
 
-updateSum();
-updateExpense();
-updateIncome();
+updateSumTotal();
+updateSumExpense();
+updateSumIncome();
 populateWallets();
 populateCategories();
 updateWallets();

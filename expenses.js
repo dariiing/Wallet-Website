@@ -48,7 +48,7 @@ const Categories = [
     }
 ]
 
-function updateSum() {
+function updateSumTotal() {
 
     let totalSum = 0;
 
@@ -60,7 +60,7 @@ function updateSum() {
 }
 
 
-function updateExpense(){
+function updateSumExpense(){
     let totalSum = 0;
     Expenses.forEach(order =>{
         if(order.type==='-'){
@@ -73,7 +73,7 @@ function updateExpense(){
 }
 
 
-function updateIncome(){
+function updateSumIncome(){
     let totalSum = 0;
     Expenses.forEach(order =>{
         if(order.type==='+'){

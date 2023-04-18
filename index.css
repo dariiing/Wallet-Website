@@ -135,6 +135,9 @@ h1 span{
 
 .wallet{
     display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
     margin: 0 2rem;
     padding: 1rem 0.5rem;
     border-radius: 5px;
@@ -333,7 +336,7 @@ form input{
     margin-bottom:1rem;
     border: 1px solid var(--color-primary);
     border-radius: 5px;
-    padding:0.5rem;
+    padding:0.3rem;
 }
 .radio{
     display:flex;
@@ -372,6 +375,22 @@ form input{
 .categories{
     margin-bottom:2rem;
 }
+
+.history span{
+    margin-left:1rem;
+    margin-right:1rem;
+    cursor:pointer;
+    background-color: var(--card-color);
+    box-shadow: var(--box-shadow);
+    color:var(--black-font);
+    border-radius: var(--card-border-radius);
+    margin-top:1rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
 
 @media (max-width: 1000px){
     .container{

@@ -33,7 +33,10 @@ function showMore() {
   showRows = currentRows;
 
 }
-
+function topFunction() {
+  document.body.scrollTop = 0; // safari
+  document.documentElement.scrollTop = 0; // chrome, firefox, IE, opera
+}
 
 function updateWallets(){
   const walletsContainer = document.querySelector('.types-wallet');

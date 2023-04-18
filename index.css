@@ -390,8 +390,21 @@ form input{
     align-items: center;
 
 }
-
-
+footer{
+    margin-top:3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center
+}
+footer button{
+    background-color: var(--color-primary);
+    padding:0.5rem 1rem;
+    color: var(--black-font);
+    border-radius: var(--card-border-radius);
+    margin-bottom:0.5rem;
+    box-shadow: var(--box-shadow);
+}
 @media (max-width: 1000px){
     .container{
         width:94%;

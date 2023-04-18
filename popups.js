@@ -7,6 +7,7 @@ function cancelAddExpense(){
     let popup = document.getElementById("popup");
     popup.classList.remove("open-popup");
 }
+
 //add expense
 function closePopup(form){
     let popup = document.getElementById("popup");
@@ -33,12 +34,25 @@ function closePopup(form){
             else{
                 wallet.value += parseInt(inputPrice);
             }
+           updateWallets();
         }
     })
+
     let catSelect = document.getElementById("cat-opt");
     let catIndex = catSelect.selectedIndex;
     let selectedCategory = catSelect.options[catIndex].value;
 
+    Categories.forEach(category =>{
+        if(category.name === selectedCategory ){
+            if(inputType === '-'){
+                category.value -= parseInt(inputPrice);
+            }
+            else{
+                category.value += parseInt(inputPrice);
+            }
+            updateCategories();
+        }
+    })
 
     Expenses.push({
         name: form.name.value,
@@ -47,6 +61,7 @@ function closePopup(form){
         type: inputType
     });
 
+    updateSum();
     updateExpense();
     updateIncome();
 

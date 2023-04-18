@@ -12,6 +12,16 @@ function updateExpenses(){
 }
 
 function updateWallets(){
+  const walletsContainer = document.querySelector('.types-wallet');
+  walletsContainer.innerHTML = '<div class="wallet-form" id="wallet-form">\n' +
+      '                                <form>\n' +
+      '                                    <label for="wallet-name">Wallet name:</label><br>\n' +
+      '                                    <input type="text" id="wallet-name" name="name" value="ex: Economies"><br>\n' +
+      '                                    <label for="wallet-price">Value:</label><br>\n' +
+      '                                    <input type="number" id="wallet-price" name="value" value="100" min="1"><br>\n' +
+      '                                    <input type="button" name="button" value="Done" onclick="closeWallet(this.form)">\n' +
+      '                                </form>\n' +
+      '                            </div>';
   Wallets.forEach(wallet => {
     const div = document.createElement('div');
     div.setAttribute('class', 'wallet money');
@@ -26,7 +36,18 @@ function updateWallets(){
   })
 }
 
+
 function updateCategories(){
+  const categoriesContainer = document.querySelector('.types-cat');
+  categoriesContainer.innerHTML = `<div class="category-form" id="category-form">
+                                <form>
+                                    <label for="category-name">Category name:</label><br>
+                                    <input type="text" id="category-name" name="name" value="ex: Scholarship"><br>
+                                    <label for="category-price">Value:</label><br>
+                                    <input type="number" id="category-price" name="value" value="100" min="1"><br>
+                                    <input type="button" name="button" value="Done" onclick="closeCategory(this.form)">
+                                </form>
+                            </div>`;
   Categories.forEach(category => {
     const div = document.createElement('div');
     div.setAttribute('class', 'wallet');

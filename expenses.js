@@ -52,8 +52,8 @@ function updateSum() {
 
     let totalSum = 0;
 
-    Wallets.forEach(order =>{
-        totalSum += parseInt(order.value);
+    Wallets.forEach(wallet =>{
+        totalSum += parseInt(wallet.value);
     })
     let totalMoney = document.querySelector(".total-money h2");
     totalMoney.textContent = "$" + totalSum;

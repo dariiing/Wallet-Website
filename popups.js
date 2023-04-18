@@ -55,7 +55,6 @@ function createCategory(){
     popup.classList.add("sidebar-height");
 }
 
-
 function openEditPopup(form){
     let popup = document.querySelector('.edit-popup');
     popup.classList.add("open-popup");
@@ -66,25 +65,41 @@ function openEditPopup(form){
     const changeBtn = document.getElementById('change');
     changeBtn.addEventListener('click', function() {
         let currentName = form.closest('.text').querySelector('.text h3');
-        currentName.textContent = nameInput.value;
         let currentValue = form.closest('.text').querySelector('.text h4');
-        currentValue.textContent = '$' + valueInput.value;
+
+        Wallets.forEach(wallet => {
+            if (wallet.name === currentName.textContent && wallet.value === currentValue.textContent.replace('$', '')) {
+                wallet.name = nameInput.value;
+                wallet.value = valueInput.value;
+
+                currentName.textContent = nameInput.value;
+                currentValue.textContent = '$' + valueInput.value;
+            }
+        });
+
         updateSum();
         cancelEdit();
     });
 
     const deleteBtn = document.getElementById('delete');
     deleteBtn.addEventListener('click', function() {
+        let currenName = form.parentNode.querySelector('h3');
+        Wallets.forEach((wallet, index) => {
+            if (wallet.name === currenName.textContent) {
+                Wallets.splice(index, 1);
+                updateSum();
+            }
+        });
         form.parentNode.remove();
         cancelEdit();
     });
 }
-
 function cancelEdit(){
     let popup = document.querySelector('.edit-popup');
     popup.classList.remove("open-popup");
 }
 
+//new wallet
 function closeWallet(form){
     let popup = document.getElementById("wallet-form");
     popup.classList.remove("open-wallet-form");
@@ -127,5 +142,10 @@ function closeCategory(form){
                        <h3>${changeName}</h3>
                        <h4>$${changeValue}</h4>
                        </section>`;
+
+    Categories.push({
+        name: changeName,
+        value: changeValue
+    });
     document.querySelector('.types-cat').appendChild(div);
 }

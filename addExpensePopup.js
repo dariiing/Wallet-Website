@@ -8,6 +8,7 @@ function cancelAddExpense(){
     popup.classList.remove("open-popup");
 }
 
+//add expense popup
 function closePopup(form){
     let popup = document.getElementById("popup");
     popup.classList.remove("open-popup");
@@ -18,57 +19,64 @@ function closePopup(form){
     } else if (form.type[1].checked) {
         inputType = '+';
     }
-
-    let walletSelect = document.getElementById("wallet-opt");
-    let walletIndex = walletSelect.selectedIndex;
-    let selectedWallet = walletSelect.options[walletIndex].value;
-    let added = false;
-    Wallets.forEach(wallet =>{
-        if(wallet.name === selectedWallet && wallet.value>= parseInt(inputPrice) ){
-            if(inputType === '-'){
-                wallet.value -= parseInt(inputPrice);
+    console.log(form.type[0].checked);
+    console.log(form.type[1].checked);
+    if(isNaN(inputPrice) || inputPrice === undefined || (form.type[0].checked===false && form.type[1].checked===false)){
+        alert("Enter information correctly");
+    }
+    else{
+        let walletSelect = document.getElementById("wallet-opt");
+        let walletIndex = walletSelect.selectedIndex;
+        let selectedWallet = walletSelect.options[walletIndex].value;
+        let added = false;
+        Wallets.forEach(wallet =>{
+            if(wallet.name === selectedWallet && wallet.value>= parseInt(inputPrice) ){
+                if(inputType === '-'){
+                    wallet.value -= parseInt(inputPrice);
+                }
+                updateWallets();
+                added = true;
             }
-           updateWallets();
-            added = true;
-        }
-        else if(wallet.name === selectedWallet && wallet.value < parseInt(inputPrice) && inputType==='-' ){
-            showNoMoney();
-        }
-        else if(wallet.name === selectedWallet && inputType==='+'){
-            wallet.value += parseInt(inputPrice);
-            updateWallets();
-            added =true;
-        }
-    })
-    if(added ===true){
-        let catSelect = document.getElementById("cat-opt");
-        let catIndex = catSelect.selectedIndex;
-        let selectedCategory = catSelect.options[catIndex].value;
-
-        Categories.forEach(category =>{
-            if(category.name === selectedCategory && inputType==='-' ){
-                category.value += parseInt(inputPrice);
-                updateCategories();
+            else if(wallet.name === selectedWallet && wallet.value < parseInt(inputPrice) && inputType==='-' ){
+                showNoMoney();
+            }
+            else if(wallet.name === selectedWallet && inputType==='+'){
+                wallet.value += parseInt(inputPrice);
+                updateWallets();
+                added =true;
             }
         })
+        if(added ===true){
+            let catSelect = document.getElementById("cat-opt");
+            let catIndex = catSelect.selectedIndex;
+            let selectedCategory = catSelect.options[catIndex].value;
 
-        //tabel
-        Expenses.push({
-            name: form.name.value,
-            date: form.date.value,
-            price: form.price.value,
-            type: inputType,
-            cat : selectedCategory
-        });
+            Categories.forEach(category =>{
+                if(category.name === selectedCategory && inputType==='-' ){
+                    category.value += parseInt(inputPrice);
+                    updateCategories();
+                }
+            })
 
-        showRows = 5;
-        updateWallets();
-        updateCategories();
-        updateExpenses();
-        updateSumTotal();
-        updateSumExpense();
-        updateSumIncome();
+            //tabel
+            Expenses.push({
+                name: form.name.value,
+                date: form.date.value,
+                price: parseInt(form.price.value),
+                type: inputType,
+                cat : selectedCategory
+            });
+
+            showRows = 5;
+            updateWallets();
+            updateCategories();
+            updateExpenses();
+            updateSumTotal();
+            updateSumExpense();
+            updateSumIncome();
+        }
     }
+
 
 }
 

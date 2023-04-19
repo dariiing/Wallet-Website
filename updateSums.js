@@ -251,6 +251,7 @@ function deleteExpense(td){
         updateSumExpense();
         updateSumIncome();
     }
+    console.log(Expenses);
 }
 
 function updateList(){

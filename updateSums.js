@@ -159,13 +159,13 @@ function updateSumIncome(){
     totalMoney.textContent = "$" + totalSum;
 }
 
-
+//se formeaza sidebar stanga wallets
 function updateWallets(){
     const walletsContainer = document.querySelector('.types-wallet');
     walletsContainer.innerHTML = '<div class="wallet-form" id="wallet-form">\n' +
         '                                <form>\n' +
         '                                    <label for="wallet-name">Wallet name:</label><br>\n' +
-        '                                    <input type="text" id="wallet-name" name="name" value="ex: Economies"><br>\n' +
+        '                                    <input type="text" id="wallet-name" name="name" value="Piggy Bank"><br>\n' +
         '                                    <label for="wallet-price">Value:</label><br>\n' +
         '                                    <input type="number" id="wallet-price" name="value" value="100" min="1"><br>\n' +
         '                                    <input type="button" name="button" value="Done" onclick="closeWallet(this.form)">\n' +
@@ -185,7 +185,7 @@ function updateWallets(){
     })
 }
 
-
+//se formeaza sidebar pt categorii
 function updateCategories(){
     const categoriesContainer = document.querySelector('.types-cat');
     categoriesContainer.innerHTML = `<div class="category-form" id="category-form">
@@ -209,7 +209,7 @@ function updateCategories(){
     })
 }
 
-
+//tabel istoric
 function updateExpenses(){
     const tbody = document.querySelector('.history table tbody');
     tbody.innerHTML = '';
@@ -229,7 +229,7 @@ function updateExpenses(){
         }
     }
 }
-//delete button
+//se sterge expense-ul din istoric
 function deleteExpense(td){
     const name = td.parentNode.children[0].textContent;
     const typePrice = td.parentNode.children[2].textContent.split('');
@@ -272,6 +272,7 @@ function deleteExpense(td){
                 }
             }
         })
+        stringJSON();
         updateWallets();
         updateExpenses();
         updateSumTotal();
@@ -280,7 +281,7 @@ function deleteExpense(td){
     }
     console.log(Expenses);
 }
-
+//lista de to do
 function updateList(){
     const tbody = document.querySelector('.todo table tbody');
     tbody.innerHTML = '';
@@ -341,7 +342,7 @@ function completeItem(td){
         })
         Categories.forEach(category =>{
             if(category.name === categoryAdd){
-                category.value = parseInt(valueAdd);
+                category.value += parseInt(valueAdd);
             }
         })
         updateWallets();
@@ -355,6 +356,7 @@ function completeItem(td){
         showNoMoney();
     }
 }
+//se sterge din to do fara sa fie platit
 function deleteItem(td){
     const name = td.parentNode.children[1].textContent;
     const value = td.parentNode.children[2].textContent;
@@ -366,7 +368,7 @@ function deleteItem(td){
     });
     updateList();
 }
-
+//show more la istoric tabel
 function showMore() {
     let allRows = Expenses.length;
     let button = document.querySelector(".history .more");
@@ -384,6 +386,7 @@ function showMore() {
 
 }
 
+//daca nu ai bani de platit
 function showNoMoney(){
     let popup = document.querySelector(".no-money");
     popup.classList.add("open-popup");

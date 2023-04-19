@@ -12,21 +12,32 @@ function closeCategory(form){
     popup.classList.remove("sidebar-height");
     let changeName = form.name.value;
 
-    const div = document.createElement('div');
-    div.setAttribute('class', 'wallet');
-    div.innerHTML = `<span class="material-symbols-outlined">category</span>
+    let double = false;
+
+    Categories.forEach(cat =>{
+        if(cat.name === changeName){
+            alert("Change the name of the category");
+            double = true;
+        }
+    })
+    if(double === false){
+        const div = document.createElement('div');
+        div.setAttribute('class', 'wallet');
+        div.innerHTML = `<span class="material-symbols-outlined">category</span>
                        <section class="text" onClick="openEditPopup(this)">
                        <h3>${changeName}</h3>
                        <h4>$0</h4>
                        </section>`;
 
-    Categories.push({
-        name: changeName,
-        value: 0
-    });
-    stringJSON();
-    populateCategories();
-    document.querySelector('.types-cat').appendChild(div);
+        Categories.push({
+            name: changeName,
+            value: 0
+        });
+        stringJSON();
+        populateCategories();
+        document.querySelector('.types-cat').appendChild(div);
+    }
+
 }
 
 function populateCategories(){

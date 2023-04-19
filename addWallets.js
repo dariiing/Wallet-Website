@@ -15,24 +15,33 @@ function closeWallet(form){
 
     const div = document.createElement('div');
     div.setAttribute('class', 'wallet money');
+    let double = false;
+    Wallets.forEach(wallet=>{
+        if(wallet.name === changeName){
+            alert("Change the name of the wallet");
+            double = true;
+        }
+    })
 
+    if(double===false){
+        Wallets.push({
+            name: changeName,
+            value: changeValue
+        });
 
-    div.innerHTML = `<span class="material-symbols-outlined">wallet</span>
+        updateSumTotal();
+        populateWallets();
+        populateCategories();
+        stringJSON();
+
+        div.innerHTML = `<span class="material-symbols-outlined">wallet</span>
                        <section class="text" onClick="openEditPopup(this)">
                        <h3>${changeName}</h3>
                        <h4>$${changeValue}</h4>
                        </section>`;
-    document.querySelector('.types-wallet').appendChild(div);
+        document.querySelector('.types-wallet').appendChild(div);
+    }
 
-    Wallets.push({
-        name: changeName,
-        value: changeValue
-    });
-
-    updateSumTotal();
-    populateWallets();
-    populateCategories();
-    stringJSON();
 }
 
 function populateWallets(){

@@ -220,7 +220,7 @@ function deleteExpense(td){
     Wallets.forEach(wallet =>{
         totalSum += wallet.value ;
     })
-    if(totalSum < price || (totalSum < price) && typePrice[0] === '+' ){
+    if((totalSum < price) && typePrice[0] === '+' ){
         showNoMoney();
     }
     else{

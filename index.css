@@ -304,13 +304,14 @@ button:hover,button:active{
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
-    padding: 0 4rem 4rem;
     margin:auto;
     box-shadow: 0 2rem 10rem var(--color-dark);
     font-size: 40px;
     text-align: center;
 }
-
+.no-money{
+    padding: 0 4rem 4rem;
+}
 .open-popup{
     display: block;
     position:fixed;
@@ -413,6 +414,10 @@ tr span{
 .mobile{
     display:none;
 }
+form input[type="text"], form input[type="number"], form input[type="date"]{
+    width:60%;
+}
+
 @media (max-width: 1000px){
     .mobile{
         display:block;

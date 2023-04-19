@@ -21,7 +21,7 @@ function closePopup(form){
     }
     console.log(form.type[0].checked);
     console.log(form.type[1].checked);
-    if(isNaN(inputPrice) || inputPrice === undefined || (form.type[0].checked===false && form.type[1].checked===false)){
+    if(inputPrice === undefined || (form.type[0].checked===false && form.type[1].checked===false)){
         alert("Enter information correctly");
     }
     else{

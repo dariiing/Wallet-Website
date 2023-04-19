@@ -110,10 +110,30 @@ function main() {
     const categoriesJSON = localStorage.getItem('categories');
     const listJSON = localStorage.getItem('list');
 
-    Expenses = JSON.parse(expensesJSON) || [];
-    Wallets = JSON.parse(walletsJSON) || [];
-    Categories = JSON.parse(categoriesJSON) || [];
-    List = JSON.parse(listJSON) || [];
+    Expenses = JSON.parse(expensesJSON, (key, value) => {
+        if (key === 'price') {
+            return Number(value);
+        }
+        return value;
+    }) || [];
+    Wallets = JSON.parse(walletsJSON, (key, value) => {
+        if (key === 'value') {
+            return Number(value);
+        }
+        return value;
+    }) || [];
+    Categories = JSON.parse(categoriesJSON, (key, value) => {
+        if (key === 'value') {
+            return Number(value);
+        }
+        return value;
+    }) || [];
+    List = JSON.parse(listJSON, (key, value) => {
+        if (key === 'value') {
+            return Number(value);
+        }
+        return value;
+    }) || [];
 
     if (localStorage.getItem('theme') === 'dark') {
         document.body.classList.add('dark-theme');

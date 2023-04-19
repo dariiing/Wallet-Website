@@ -45,8 +45,9 @@ function openEditPopup(form){
                 Categories.splice(index, 1);
             }
         });
+        stringJSON();
         form.parentNode.remove();
         cancelEdit();
-        stringJSON();
+
     });
 }

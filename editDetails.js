@@ -47,5 +47,6 @@ function openEditPopup(form){
         });
         form.parentNode.remove();
         cancelEdit();
+        stringJSON();
     });
 }

@@ -11,31 +11,35 @@ function closeCategory(form){
     popup = document.getElementById("sidebar");
     popup.classList.remove("sidebar-height");
     let changeName = form.name.value;
-    let changeValue = form.value.value;
 
     const div = document.createElement('div');
     div.setAttribute('class', 'wallet');
     div.innerHTML = `<span class="material-symbols-outlined">category</span>
                        <section class="text" onClick="openEditPopup(this)">
                        <h3>${changeName}</h3>
-                       <h4>$${changeValue}</h4>
+                       <h4>$0</h4>
                        </section>`;
 
     Categories.push({
         name: changeName,
-        value: changeValue
+        value: 0
     });
     document.querySelector('.types-cat').appendChild(div);
 }
 
 function populateCategories(){
-    let select = document.getElementById("cat-opt");
-
-    select.innerHTML='';
+    let select1 = document.getElementById("cat-opt");
+    let select2 = document.getElementById("cat-todo");
+    select1.innerHTML='';
+    select2.innerHTML='';
     Categories.forEach(category =>{
-        let option = document.createElement('option');
-        option.value= category.name;
-        option.text = category.name;
-        select.appendChild(option);
+        let option1 = document.createElement('option');
+        option1.value= category.name;
+        option1.text = category.name;
+        select1.appendChild(option1);
+        let option2 = document.createElement('option');
+        option2.value= category.name;
+        option2.text = category.name;
+        select2.appendChild(option2);
     })
 }

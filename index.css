@@ -66,7 +66,7 @@ h1 span{
     color:var(--color-primary);
 }
 
-.edit-popup span,.log-popup span {
+.edit-popup span,.log-popup span,.add-todo span,.no-money span {
     /*color:var(--color-dark);*/
     margin-bottom:1rem;
     margin-top:2rem;
@@ -220,7 +220,7 @@ h1 span{
     transition: all 300ms ease;
 }
 
-.first-part button:hover,.text-button button{
+.first-part button:hover,.text-button button:hover{
     box-shadow: none;
 }
 .insights span{
@@ -287,30 +287,15 @@ button:hover,button:active{
     display:none;
 }
 
-.log-popup h2,.edit-popup h2{
+.log-popup h2,.edit-popup h2,.add-todo h2{
     margin-bottom:2rem;
     text-align: center;
 }
-.log-popup label{
+.log-popup label,.edit-popup label, .add-todo label{
     color: var(--black-font);
 }
-.log-popup{
-    display:none;
-    width:400px;
-    background: var(--card-color);
-    border-radius: var(--card-border-radius);
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    margin:auto;
-    box-shadow: 0 2rem 10rem var(--color-dark);
-    font-size: 40px;
-    text-align: center;
-}
 
-
-.edit-popup{
+.log-popup,.edit-popup,.add-todo,.no-money{
     display:none;
     width:400px;
     background: var(--card-color);
@@ -344,7 +329,7 @@ form input{
     flex-direction: row;
     gap:1rem;
 }
-.log-popup #done,.edit-popup #delete, .edit-popup #change{
+.log-popup #done,.edit-popup #delete, .edit-popup #change, .add-todo #done-todo{
     cursor:pointer;
     font-size:1rem;
     background-color:  var(--color-primary);
@@ -424,7 +409,23 @@ footer button{
 tr span{
     cursor: pointer;
 }
+
+.mobile{
+    display:none;
+}
 @media (max-width: 1000px){
+    .mobile{
+        display:block;
+        background-color: var(--color-primary);
+        border-radius: var(--card-border-radius);
+        padding:0.2rem;
+    }
+    footer{
+        margin-bottom:2rem;
+    }
+    footer button{
+        margin:0;
+    }
     .container{
         width:94%;
         display:flex;
@@ -482,13 +483,13 @@ tr span{
     .first-part{
         display: inherit;
     }
-    .log-popup,.edit-popup{
+    .log-popup,.edit-popup, .add-todo,.no-money{
         position: fixed;
         z-index:999999;
     }
 }
 @media (max-width:500px){
-    .log-popup,.edit-popup{
+    .log-popup,.edit-popup, .add-todo,.no-money{
         width:300px;
     }
 }

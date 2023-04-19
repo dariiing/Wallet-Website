@@ -22,48 +22,54 @@ function closePopup(form){
     let walletSelect = document.getElementById("wallet-opt");
     let walletIndex = walletSelect.selectedIndex;
     let selectedWallet = walletSelect.options[walletIndex].value;
-
+    let added = false;
     Wallets.forEach(wallet =>{
-        if(wallet.name === selectedWallet ){
+        if(wallet.name === selectedWallet && wallet.value>= parseInt(inputPrice) ){
             if(inputType === '-'){
                 wallet.value -= parseInt(inputPrice);
             }
-            else{
-                wallet.value += parseInt(inputPrice);
-            }
            updateWallets();
+            added = true;
+        }
+        else if(wallet.name === selectedWallet && wallet.value < parseInt(inputPrice) && inputType==='-' ){
+            showNoMoney();
+        }
+        else if(wallet.name === selectedWallet && inputType==='+'){
+            wallet.value += parseInt(inputPrice);
+            updateWallets();
+            added =true;
         }
     })
+    if(added ===true){
+        let catSelect = document.getElementById("cat-opt");
+        let catIndex = catSelect.selectedIndex;
+        let selectedCategory = catSelect.options[catIndex].value;
 
-    let catSelect = document.getElementById("cat-opt");
-    let catIndex = catSelect.selectedIndex;
-    let selectedCategory = catSelect.options[catIndex].value;
-
-    Categories.forEach(category =>{
-        if(category.name === selectedCategory ){
-            if(inputType === '-'){
-                category.value -= parseInt(inputPrice);
-            }
-            else{
+        Categories.forEach(category =>{
+            if(category.name === selectedCategory && inputType==='-' ){
                 category.value += parseInt(inputPrice);
+                updateCategories();
             }
-            updateCategories();
-        }
-    })
+        })
 
-    //tabel
-    Expenses.push({
-        name: form.name.value,
-        date: form.date.value,
-        price: form.price.value,
-        type: inputType
-    });
+        //tabel
+        Expenses.push({
+            name: form.name.value,
+            date: form.date.value,
+            price: form.price.value,
+            type: inputType,
+            cat : selectedCategory
+        });
 
-    showRows = 5;
-    updateExpenses();
-    updateSumTotal();
-    updateSumExpense();
-    updateSumIncome();
+        showRows = 5;
+        updateWallets();
+        updateCategories();
+        updateExpenses();
+        updateSumTotal();
+        updateSumExpense();
+        updateSumIncome();
+    }
+
 }
 
 

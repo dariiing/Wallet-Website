@@ -1,5 +1,5 @@
 //yyyy-mm-dd
-const Expenses = [
+let Expenses = [
     {
         name: 'Electricity Bill',
         date: '2023-03-03',
@@ -58,7 +58,7 @@ const Expenses = [
     }
 ]
 
-const Wallets = [
+let Wallets = [
     {
         name: 'Home',
         value: 340
@@ -68,8 +68,7 @@ const Wallets = [
         value: 125
     }
 ]
-
-const Categories = [
+let Categories = [
     {
         name: 'Utility',
         value: 0
@@ -92,6 +91,34 @@ let List = [
         cat: 'Utility'
     }
 ]
+
+function stringJSON(){
+    const expensesJSON = JSON.stringify(Expenses);
+    const walletsJSON = JSON.stringify(Wallets);
+    const categoriesJSON = JSON.stringify(Categories);
+    const listJSON = JSON.stringify(List);
+
+    localStorage.setItem('expenses', expensesJSON);
+    localStorage.setItem('wallets', walletsJSON);
+    localStorage.setItem('categories', categoriesJSON);
+    localStorage.setItem('list', listJSON);
+}
+
+function main() {
+    const expensesJSON = localStorage.getItem('expenses');
+    const walletsJSON = localStorage.getItem('wallets');
+    const categoriesJSON = localStorage.getItem('categories');
+    const listJSON = localStorage.getItem('list');
+
+    Expenses = JSON.parse(expensesJSON) || [];
+    Wallets = JSON.parse(walletsJSON) || [];
+    Categories = JSON.parse(categoriesJSON) || [];
+    List = JSON.parse(listJSON) || [];
+
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-theme');
+    }
+}
 
 let showRows = 5;
 
@@ -322,6 +349,7 @@ function completeItem(td){
         updateSumExpense();
         updateCategories();
         deleteItem(td);
+        stringJSON();
     }
     else{
         showNoMoney();

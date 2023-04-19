@@ -32,6 +32,7 @@ function closeWallet(form){
     updateSumTotal();
     populateWallets();
     populateCategories();
+    stringJSON();
 }
 
 function populateWallets(){

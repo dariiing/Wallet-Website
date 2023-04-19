@@ -24,6 +24,8 @@ function closeCategory(form){
         name: changeName,
         value: 0
     });
+    stringJSON();
+    populateCategories();
     document.querySelector('.types-cat').appendChild(div);
 }
 

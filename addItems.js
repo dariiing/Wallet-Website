@@ -21,6 +21,8 @@ function closeAddItemPopup(form){
 
     updateList();
     cancelAddItemPopup();
+    stringJSON();
+    main();
 }
 
 function closeNoMoney(){

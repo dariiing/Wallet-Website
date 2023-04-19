@@ -34,17 +34,16 @@ function closePopup(form){
                 if(inputType === '-'){
                     wallet.value -= parseInt(inputPrice);
                 }
+                else if(inputType==='+'){
+                    wallet.value += parseInt(inputPrice);
+                }
                 updateWallets();
                 added = true;
             }
             else if(wallet.name === selectedWallet && wallet.value < parseInt(inputPrice) && inputType==='-' ){
                 showNoMoney();
             }
-            else if(wallet.name === selectedWallet && inputType==='+'){
-                wallet.value += parseInt(inputPrice);
-                updateWallets();
-                added =true;
-            }
+
         })
         if(added ===true){
             let catSelect = document.getElementById("cat-opt");
@@ -74,6 +73,7 @@ function closePopup(form){
             updateSumTotal();
             updateSumExpense();
             updateSumIncome();
+            stringJSON();
         }
     }
 

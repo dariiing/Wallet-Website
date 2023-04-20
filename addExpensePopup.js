@@ -21,7 +21,7 @@ function closePopup(form){
     }
     console.log(form.type[0].checked);
     console.log(form.type[1].checked);
-    if(inputPrice === undefined || (form.type[0].checked===false && form.type[1].checked===false)){
+    if(inputPrice === undefined || (form.type[0].checked===false && form.type[1].checked===false) ){
         alert("Enter information correctly");
     }
     else{
@@ -33,16 +33,19 @@ function closePopup(form){
             if(wallet.name === selectedWallet ){
                 if(inputType === '-'  && wallet.value>= parseInt(inputPrice)){
                     wallet.value -= parseInt(inputPrice);
+                    updateWallets();
+                    added = true;
                 }
                 else if(inputType==='+'){
                     wallet.value += parseInt(inputPrice);
+                    updateWallets();
+                    added = true;
                 }
-                updateWallets();
-                added = true;
+                else if(wallet.value < parseInt(inputPrice) && inputType==='-'){
+                    showNoMoney();
+                }
             }
-            else if(wallet.name === selectedWallet && wallet.value < parseInt(inputPrice) && inputType==='-' ){
-                showNoMoney();
-            }
+
 
         })
         if(added ===true){

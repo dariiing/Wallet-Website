@@ -30,8 +30,8 @@ function closePopup(form){
         let selectedWallet = walletSelect.options[walletIndex].value;
         let added = false;
         Wallets.forEach(wallet =>{
-            if(wallet.name === selectedWallet && wallet.value>= parseInt(inputPrice) ){
-                if(inputType === '-'){
+            if(wallet.name === selectedWallet ){
+                if(inputType === '-'  && wallet.value>= parseInt(inputPrice)){
                     wallet.value -= parseInt(inputPrice);
                 }
                 else if(inputType==='+'){

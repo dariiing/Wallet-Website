@@ -263,7 +263,7 @@ tbody tr:hover{
 }
 
 .light-dark{
-    margin-right:1rem;
+    /*margin-right:1rem;*/
     /*display:flex;*/
     align-items: center;
     /*justify-content: space-between;*/
@@ -273,11 +273,23 @@ tbody tr:hover{
     color: var(--black-font);
 
 }
-
+footer{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap:1rem;
+    margin-bottom: 1rem;
+}
 .light-dark span{
     padding:0.3rem;
     border-radius: 0.5rem;
-
+}
+footer .reset{
+    background-color: var(--color-primary);
+    border-radius: var(--card-border-radius);
+    padding: 0.3rem;
+    /*margin-left:1rem;*/
 }
 
 button:hover,button:active{
@@ -388,11 +400,14 @@ footer button{
     padding:0.5rem 1rem;
     color: var(--black-font);
     border-radius: var(--card-border-radius);
-    margin-bottom:0.5rem;
     box-shadow: var(--box-shadow);
     gap:1rem;
+    cursor:pointer;
 }
-
+footer span{
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
 .text-button{
     display:flex;
     flex-direction: row;

@@ -229,6 +229,7 @@ function updateCategories(){
     })
 }
 
+
 //tabel istoric
 function updateExpenses(){
     const tbody = document.querySelector('.history table tbody');

@@ -5,6 +5,7 @@ function createCategory(){
     popup.classList.add("sidebar-height");
 }
 
+//adauga categorie noua
 function closeCategory(form){
     let popup = document.getElementById("category-form");
     popup.classList.remove("open-category-form");

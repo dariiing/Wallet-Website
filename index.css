@@ -398,7 +398,7 @@ footer{
 footer button{
     background-color: var(--color-primary);
     padding:0.5rem 1rem;
-    color: var(--black-font);
+    /*color: var(--black-font);*/
     border-radius: var(--card-border-radius);
     box-shadow: var(--box-shadow);
     gap:1rem;

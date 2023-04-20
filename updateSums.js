@@ -92,54 +92,6 @@ let List = [
     }
 ]
 
-function stringJSON(){
-    const expensesJSON = JSON.stringify(Expenses);
-    const walletsJSON = JSON.stringify(Wallets);
-    const categoriesJSON = JSON.stringify(Categories);
-    const listJSON = JSON.stringify(List);
-
-    localStorage.setItem('expenses', expensesJSON);
-    localStorage.setItem('wallets', walletsJSON);
-    localStorage.setItem('categories', categoriesJSON);
-    localStorage.setItem('list', listJSON);
-}
-
-function main() {
-    const expensesJSON = localStorage.getItem('expenses');
-    const walletsJSON = localStorage.getItem('wallets');
-    const categoriesJSON = localStorage.getItem('categories');
-    const listJSON = localStorage.getItem('list');
-
-    Expenses = JSON.parse(expensesJSON, (key, value) => {
-        if (key === 'price') {
-            return Number(value);
-        }
-        return value;
-    }) || [];
-    Wallets = JSON.parse(walletsJSON, (key, value) => {
-        if (key === 'value') {
-            return Number(value);
-        }
-        return value;
-    }) || [];
-    Categories = JSON.parse(categoriesJSON, (key, value) => {
-        if (key === 'value') {
-            return Number(value);
-        }
-        return value;
-    }) || [];
-    List = JSON.parse(listJSON, (key, value) => {
-        if (key === 'value') {
-            return Number(value);
-        }
-        return value;
-    }) || [];
-
-    if (localStorage.getItem('theme') === 'dark') {
-        document.body.classList.add('dark-theme');
-    }
-}
-
 let showRows = 5;
 
 function updateSumTotal() {
@@ -179,57 +131,6 @@ function updateSumIncome(){
     totalMoney.textContent = "$" + totalSum;
 }
 
-//se formeaza sidebar stanga wallets
-function updateWallets(){
-    const walletsContainer = document.querySelector('.types-wallet');
-    walletsContainer.innerHTML = '<div class="wallet-form" id="wallet-form">\n' +
-        '                                <form>\n' +
-        '                                    <label for="wallet-name">Wallet name:</label><br>\n' +
-        '                                    <input type="text" id="wallet-name" name="name" value="Piggy Bank"><br>\n' +
-        '                                    <label for="wallet-price">Value:</label><br>\n' +
-        '                                    <input type="number" id="wallet-price" name="value" value="100" min="1"><br>\n' +
-        '                                    <input type="button" name="button" value="Done" onclick="closeWallet(this.form)">\n' +
-        '                                </form>\n' +
-        '                            </div>';
-    Wallets.forEach(wallet => {
-        const div = document.createElement('div');
-        div.setAttribute('class', 'wallet money');
-
-
-        div.innerHTML = `<span class="material-symbols-outlined">wallet</span>
-                       <section class="text" onClick="openEditPopup(this)">
-                       <h3>${wallet.name}</h3>
-                       <h4>$${wallet.value}</h4>
-                       </section>`;
-        document.querySelector('.types-wallet').appendChild(div);
-    })
-}
-
-//se formeaza sidebar pt categorii
-function updateCategories(){
-    const categoriesContainer = document.querySelector('.types-cat');
-    categoriesContainer.innerHTML = `<div class="category-form" id="category-form">
-                                <form>
-                                    <label for="category-name">Category name:</label><br>
-                                    <input type="text" id="category-name" name="name" value="Scholarship"><br>
-                                    <input type="button" name="button" value="Done" onclick="closeCategory(this.form)">
-                                </form>
-                            </div>`;
-    Categories.forEach(category => {
-        const div = document.createElement('div');
-        div.setAttribute('class', 'wallet');
-
-
-        div.innerHTML = `<span class="material-symbols-outlined">category</span>
-                       <section class="text" onClick="openEditPopup(this)">
-                       <h3>${category.name}</h3>
-                       <h4>$${category.value}</h4>
-                       </section>`;
-        document.querySelector('.types-cat').appendChild(div);
-    })
-}
-
-
 //tabel istoric
 function updateExpenses(){
     const tbody = document.querySelector('.history table tbody');
@@ -250,6 +151,7 @@ function updateExpenses(){
         }
     }
 }
+
 //se sterge expense-ul din istoric
 function deleteExpense(td){
     const name = td.parentNode.children[0].textContent;

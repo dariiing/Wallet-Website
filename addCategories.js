@@ -57,3 +57,27 @@ function populateCategories(){
         select2.appendChild(option2);
     })
 }
+
+//se formeaza sidebar pt categorii
+function updateCategories(){
+    const categoriesContainer = document.querySelector('.types-cat');
+    categoriesContainer.innerHTML = `<div class="category-form" id="category-form">
+                                <form>
+                                    <label for="category-name">Category name:</label><br>
+                                    <input type="text" id="category-name" name="name" value="Scholarship"><br>
+                                    <input type="button" name="button" value="Done" onclick="closeCategory(this.form)">
+                                </form>
+                            </div>`;
+    Categories.forEach(category => {
+        const div = document.createElement('div');
+        div.setAttribute('class', 'wallet');
+
+
+        div.innerHTML = `<span class="material-symbols-outlined">category</span>
+                       <section class="text" onClick="openEditPopup(this)">
+                       <h3>${category.name}</h3>
+                       <h4>$${category.value}</h4>
+                       </section>`;
+        document.querySelector('.types-cat').appendChild(div);
+    })
+}
